@@ -2,11 +2,11 @@ from timeit import default_timer
 from django.contrib.auth.models import Group
 from .models import Product, Order
 from django.shortcuts import render, redirect, get_object_or_404
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 from django.http import HttpRequest, HttpResponse
 from .forms import ProductForm, GroupForm
 from django.views import View
-from django.views.generic import TemplateView, ListView, DetailView
+from django.views.generic import TemplateView, ListView, DetailView, CreateView
 
 
 class ShopIndexView(View):
@@ -105,3 +105,10 @@ def create_product(request: HttpRequest) -> HttpResponse:
         form = ProductForm()
     context = {"form": form}
     return render(request, "shopapp/create-product.html", context=context)
+
+
+class CreateProductView(CreateView):
+    template_name = 'shopapp/create-product2.html'
+    model = Product
+    fields = 'name', 'description', 'price', 'discount'
+    success_url = reverse_lazy('shopapp:products_list')
