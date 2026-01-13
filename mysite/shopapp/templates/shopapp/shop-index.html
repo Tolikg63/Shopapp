@@ -1,0 +1,12 @@
+{% extends "./base.html" %}
+{% block title %}Shop Index{% endblock title %}
+{% block content %}
+<h1>Welcome to the Shop!</h1>
+<div>
+    <ul>
+        {% for product in products %}
+            <li>{{ product }}</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock content %}

@@ -1,0 +1,19 @@
+{% extends "./base.html" %}
+{% block title %}Product Details{% endblock title %}
+{% block content %}
+    <div>
+        <p>Product id is {{ product.id }}</p>
+        <p>Product name is {{ product.name }}</p>
+        <p>Product description is {{ product.description }}</p>
+        <p>Product price is {{ product.price }}</p>
+        <p>Product discount is {% firstof product.discount 'no discount' %}</p
+        {% if product.archived %}
+            <p>This product is archived</p>
+        {% else %}
+            <p>This product is active</p>
+        {% endif %}
+    </div>
+    <div>
+        <a href="{% url 'shopapp:products_list' %}">Back to Products List</a>
+    </div>
+{% endblock content %}

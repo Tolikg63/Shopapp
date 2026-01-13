@@ -1,0 +1,20 @@
+{% extends "./base.html" %}
+{% block title %}Create Product{% endblock %}
+{% block content %}
+<div class="form">
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Create Product</button>
+    </form>
+</div>
+<div class="context">
+    {% if request.POST %} 
+        <ul>
+            <li>{{ request.POST.name }}</li>
+            <li>{{ request.POST.price }}</li>
+            <li>{{ request.POST.description }}</li>
+        </ul>
+    {% endif %}
+</div>
+{% endblock %}

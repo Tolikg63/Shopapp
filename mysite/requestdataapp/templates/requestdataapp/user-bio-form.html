@@ -1,0 +1,26 @@
+{% extends "./base.html" %}
+
+{% block title %}Bio Form Page{% endblock title %}
+
+{% block content %}
+<div class="form">
+    <form method='post'>
+        {% csrf_token %}
+        {{ form.as_p }}
+        {% comment %} <label for="first_name">Enter your first name: </label>
+        <input type="text" id="first_name" name="first_name"><br><br>
+        <label for="last_name">Enter your last name: </label>
+        <input type="text" id="last_name" name="last_name"><br><br>
+        <label for="age">Enter your age:</label>
+        <input type="number" id="age" name="age" min=1 max=99><br><br>{% endcomment %}
+        <button type="submit">Submit</button> 
+    </form>
+</div>
+{% if request.POST %}
+    <div class="response">
+        <p>First Name: {{ request.POST.first_name }}</p>
+        <p>Last Name: {{ request.POST.last_name }}</p>
+        <p>Age: {{ request.POST.age }}</p>
+    </div>
+{% endif %}
+{% endblock content %}

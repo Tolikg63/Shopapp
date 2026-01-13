@@ -1,0 +1,25 @@
+{% extends "./base.html" %}
+
+{% block title %}Group List{% endblock title %}
+
+{% block content %}
+    <h1>Group List:</h1>
+    {% comment %} <p>{{ groups }}</p> {% endcomment %}
+    <div class="form">
+        <form method='post'>
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Create Group</button>
+        </form>
+    </div>
+    <ul>
+        {% for group in groups %}
+            <li>{{ group }}</li>
+            <ul>
+                {%for permission in group.permissions.all %}
+                    <li>{{ permission }}</li>
+                {% endfor %}
+            </ul>
+        {% endfor %}
+    </ul>
+{% endblock content %}
