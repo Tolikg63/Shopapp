@@ -1,0 +1,35 @@
+{% extends "./base.html" %}
+{% block title %}{% endblock title %}
+{% block content %}
+<div class="about_me">
+    <h1>User info:</h1>
+    {% if user.is_authenticated %}
+        <p>User name: {{ user.username }}</p>
+        <p>First name: {{ user.first_name }}</p>
+        <p>Last name: {% firstof user.last_name 'No data' %}</p>
+        <p>Email: {% firstof user.email 'No data' %}</p>
+    {% else %}
+        <h3>User not found</h3>
+    {% endif %}
+    <div class="link-to-admin">
+        <a href="/admin/">admin panel</a>
+    </div>
+</div>
+{% endblock content %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
