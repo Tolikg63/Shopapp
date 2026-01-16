@@ -8,6 +8,7 @@
         <p>First name: {{ user.first_name }}</p>
         <p>Last name: {% firstof user.last_name 'No data' %}</p>
         <p>Email: {% firstof user.email 'No data' %}</p>
+        <p>Bio: {% firstof user.profile.bio 'No data' %}</p>
     {% else %}
         <h3>User not found</h3>
     {% endif %}
