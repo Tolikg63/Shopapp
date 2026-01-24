@@ -7,6 +7,16 @@ from django.http import HttpRequest, HttpResponse
 from .forms import ProductForm, GroupForm
 from django.views import View
 from django.views.generic import TemplateView, ListView, DetailView, CreateView
+from rest_framework.viewsets import ModelViewSet
+
+from .forms import ProductForm
+from .models import Product, Order
+from .serializers import ProductSerializers
+
+
+class ProductViewSet(ModelViewSet):
+    queryset = Product.objects.all()
+    serializer_class = ProductSerializers
 
 
 class ShopIndexView(View):
