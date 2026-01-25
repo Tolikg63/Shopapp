@@ -11,12 +11,19 @@ from rest_framework.viewsets import ModelViewSet
 
 from .forms import ProductForm
 from .models import Product, Order
-from .serializers import ProductSerializers
+from .serializers import ProductSerializer
 
 
 class ProductViewSet(ModelViewSet):
     queryset = Product.objects.all()
-    serializer_class = ProductSerializers
+    serializer_class = ProductSerializer
+    filterset_fields = [
+        'name',
+        'description',
+        'price',
+        'discount',
+        'archived',
+    ]
 
 
 class ShopIndexView(View):
