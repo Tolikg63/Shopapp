@@ -1,0 +1,2 @@
+2026-02-04 17:14:06,921 [INFO] shopapp.views: Rendering shop index
+2026-02-04 17:14:07,420 [INFO] shopapp.views: Rendering shop index
